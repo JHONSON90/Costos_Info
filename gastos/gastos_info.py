@@ -64,8 +64,8 @@ total_2025 = td_2025['SALDO'].sum()
 meses_2025 = len(td_2025['MES'].unique())
 
 valor_total_2024 = promedio_2024 * meses_2025
-dif_total = (total_2025-total_2024)/total_2025
-dif_prom = (promedio_2025-promedio_2024)/promedio_2025
+dif_total = ((total_2025-total_2024)/total_2024)*100
+dif_prom = ((promedio_2025-promedio_2024)/promedio_2024)*100
 
 data1, data2, data3,  = st.columns(3, vertical_alignment="center")
 data1.metric("Total gastos 2024", f"${total_2024.round(2):,.2f}",  border=True)
