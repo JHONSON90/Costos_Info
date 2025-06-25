@@ -1,0 +1,19 @@
+
+[connections.bigquery]
+type: "service_account",
+project_id: "rugged-research-461115-j0",
+private_key_id: "47c6624119cf7d30c38b691f6faead09bd79a1ec",
+private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCbvgRGtMkd+kTg\ndE3h7SE/P9Q0aGb6HU87NicTuGn0eF5LvqUWwWTfP/0cIlGyfD3smqKug+7Z7sj2\njEWwPhezKm3a+7lua+77uSuqQn113EwAL6iSUX+jWx6lCpnkqu///UMHPYWSGdCc\nL5ne2SYSYRgUal/19uGYmVQ9HIDya0tO5vhJ+txsHBzkaOmCMUikur/JjQts+Ub/\noqb44O1sySiW9jajDJjsEs0ICcwz/76h0ucfGGkWF1WI9V+jZTt3g0JLYpicDEee\neXhc49HuML4dMiXB4Udju87pZOw4G2HqS12mtmAfmC8zsZdTkTun7qSvqXdnoec0\nseE2t5oDAgMBAAECggEADB5Tf9r2YUZFkL+MBd3pPd4uGWvcQ27/aMiUbtTlLbgm\nAjfR6bzfp/13KPbEq6I+QUhhCzpJ3hxV99U/YPDb8D2HccgvjBeK73xfmO52i7K6\nGTOcJtJ/n4rqDgaOpfvlE+K1kf0oBQ/MKzMLAoucCkcS1BfY4q80q6aWpvCuWe5/\nSGZWeI6FRS1qcw13nBx37Z18YYDBaDjiZgxzlYxNLOIbQFR1NGRpbsoa5SlsQ+MM\nvugPd3w36ClZ9dI4UPdE6nyCkrtxfvTqHARmp6QN2Z21+pSZujg+vbpno3EFmZku\nsz60gWmoOBJoE2W37qD0PmqDlBaMsmWh6RZOYP9R8QKBgQDKY3MQse3c+YI0Me3A\n8sNzhk7ap561igmRA9+nzALaFj4+i69UszhGlCySnlOItrjXHjW6WaW5KPAeih3w\nwlwf0alOj8PUyAFQ6qkrFEzGopTZj010A7AZYbXtSEUnHHWgpYm2HJKQgsVv6//i\nAVSxthYfOo3VtnqWIySerTuJEQKBgQDE/1n1DZjKjQw8QiKryCCLy8uAyAOgDz/M\n7bzw3jVQTEMrlauoyl+jYfziePUEv2amWvxpnNN6648TF9UkXxYD/Yf4ij8lTG3o\nEn4DiUN1vO9FmnCJ8UxQuSYd+oyUGxTCbUX/L0SV646kYdWJBspDPj0f2HMEajpn\nGITT7dOR0wKBgQCzTfRNYDXKRktyjqGDBhDfMqh9028qisb68SGe+YG1UWuH4h1N\nvxImhXQP2bFMOAX+n8cd9/p41qoVhGwON0OC9S84aOoog6GW3K9PeUaj3LpfHTST\nigjkE8soE5Ugl3gnAUHGU/4Nha4CAGXNBzzPzPBAbpHmOyrUBQKWigdq4QKBgBqo\nx96+4U9/+QjqllCS+7yPbtHVv4/YoHS2M5yRJbvhJjHuxlVIVdsBdrybS+VBlb2r\nkH8mZwQ6fplB32lVqOAPXmhHJTaB+lmurvkBiWyUjfjoZpR0YDSIad0ivAWLCKsr\nKI7ZMbnsL9iVGNW7YoHpGVKG80HEsnSjP86CX+BbAoGAS4BBJSDH7bcJrtkY2PM0\nZNGVoAYap1isQHJEYoP6gkzdh0GPSXj+7RyllxWZeDs7xDhgDXXZxBSaa0v1R/1G\nXtr9lLQrg+m5o8pg/y3hOCsPkakAMNLHYtl3cVmn6t2VEBxUqTZ+WffhOSGPwlvZ\nk3rfmXGF+hir5KlmAHH6bxo=\n-----END PRIVATE KEY-----\n",
+client_email: "costos-bigquery@rugged-research-461115-j0.iam.gserviceaccount.com",
+client_id: "110159814053123777199",
+auth_uri: "https://accounts.google.com/o/oauth2/auth",
+token_uri: "https://oauth2.googleapis.com/token",
+auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/costos-bigquery%40rugged-research-461115-j0.iam.gserviceaccount.com",
+universe_domain: "googleapis.com"
+
+
+
+agregar esto al requirements.txt
+gcsfs==x.x.x
+st-files-connection

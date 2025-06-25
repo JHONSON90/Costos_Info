@@ -10,7 +10,9 @@ def login_screen():
     st.button("Log in with Google", on_click=st.login)
 
 if not st.user.is_logged_in:
-    pg = st.navigation([st.Page(login_screen)])
+    #pg = st.navigation([st.Page(login_screen)])
+    login_screen()
+    st.stop()
 
 else:
     if st.user.email in ADMIN_EMAILS:
