@@ -102,6 +102,7 @@ with asis:
 st.title("Analisis de Nomina por C. de Costos")
 
 tabla_x_cc = df.pivot_table(index="C_correccion", columns="mes", values="GRAN TOTAL", aggfunc="sum")
+tabla_X_cc_und = df.pivot_table(index="C_correccion", columns="mes", values="GRAN TOTAL", aggfunc="count")
 
 grafica_x_cc = df.groupby(["C_correccion", "mes"]).agg(
     num_empleados = ('C_correccion', 'count'),
@@ -122,6 +123,9 @@ st.plotly_chart(fig, use_container_width=True)
 
 with st.expander("Tabla de Nomina por C. de Costos"):
     st.write(tabla_x_cc)
+
+with st.expander("Tabla de Nomina por C. de Costos y numero de trabajadores"):
+    st.write(tabla_X_cc_und)
 
 st.title("Analisis por cargos")
 

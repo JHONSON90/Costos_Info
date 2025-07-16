@@ -2,7 +2,10 @@ import streamlit as st
 
 ADMIN_EMAILS = ["costosproinsalud@gmail.com", "edisonportillal@gmail.com"]
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="Costos Proinsalud",
+    page_icon=":hospital:",
+    layout="wide")
 
 def login_screen():
     st.header("This app is private.")
