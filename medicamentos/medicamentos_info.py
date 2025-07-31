@@ -45,10 +45,8 @@ df["dCantidad"] = abs(df["dCantidad"])
 df["dValor"] = abs(df["dValor"])
 
 df["NUMERO MES"] = df["fecha"].dt.month
-print(df["NUMERO MES"].unique())
 df["AÑO"] = df["fecha"].dt.year
 
-df["NUMERO MES"] = df["NUMERO MES"].astype(int).fillna(0)
 df["AÑO"] = df["AÑO"].astype(int)
 df["dValor"] = df["dValor"].astype(int)
 df["dCantidad"] = df["dCantidad"].astype(int)
