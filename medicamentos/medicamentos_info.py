@@ -11,10 +11,13 @@ st.title("Informe de consumos")
 
 @st.cache_resource(show_spinner="Cargando datos. Un momento por favor...")
 def init_connection():
+       return st.connection("supabase", type=SupabaseConnection)
+
+@st.cache_data( show_spinner="Cargando datos. Un momento por favor...")
+def load_data(conn):
     try:
-        conn = st.connection("supabase", type=SupabaseConnection)
-        data = conn.table("consumos").select("*").execute()
-        df = pd.DataFrame(data.data)
+        rows = conn.table("consumos").select("*").execute()
+        df = pd.DataFrame(rows.data)
         return df
     
     except Exception as e:
@@ -22,7 +25,8 @@ def init_connection():
         st.error(f"Traceback: {traceback.format_exc()}")
         st.stop()
 
-df = init_connection()
+conn = init_connection()
+df = load_data(conn)
 
 if not df.empty:
     st.success("Datos cargados y procesados exitosamente!")
