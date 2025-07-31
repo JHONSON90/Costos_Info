@@ -35,7 +35,7 @@ if not df.empty:
 else:
     st.info("No se pudieron cargar los datos o la tabla está vacía. Pero no te preocupes te aseguramos que estamos trabajando en solucionar esto!!!")
     st.stop()
-
+print(df.columns)
 df.columns = df.columns.str.strip()
 
 df["fecha"] = pd.to_datetime(df["fecha"], format="%Y%m", errors="coerce")
@@ -81,7 +81,7 @@ if selected_lineas:
         filtered_df = df[final_condition]
 
 if not filtered_df.empty:
-    st.subheader(f"Consumo de {', '.join(selected_lineas)}" if selected_lineas else "Consumos")
+    st.subheader(f"Consumo de {', '.join(selected_lineas)}" if conditions else "Consumos")
     col1, col2 = st.columns([2,1])
     with col1:
         pivot_df = filtered_df.pivot_table(index="NUMERO MES", values="dValor", aggfunc="sum").reset_index()
