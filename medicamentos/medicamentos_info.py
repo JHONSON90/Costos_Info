@@ -13,7 +13,7 @@ st.title("Informe de consumos")
 def init_connection():
     try:
         conn = st.connection("supabase", type=SupabaseConnection)
-        data = conn.query("*", table="consumos").execute()
+        data = conn.table("consumos").select("*").execute()
         df = pd.DataFrame(data.data)
         return df
     
