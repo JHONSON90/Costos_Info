@@ -14,9 +14,9 @@ def init_connection():
        return st.connection("supabase", type=SupabaseConnection)
 
 @st.cache_data( show_spinner="Cargando datos. Un momento por favor...")
-def load_data(conn):
+def load_data(_conn):
     try:
-        rows = conn.table("consumos").select("*").execute()
+        rows = _conn.table("consumos").select("*").execute()
         df = pd.DataFrame(rows.data)
         return df
     
