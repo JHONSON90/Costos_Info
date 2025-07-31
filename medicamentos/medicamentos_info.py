@@ -14,8 +14,8 @@ st.title("Informe de consumos")
 @st.cache_data(ttl=3600, show_spinner="Cargando datos. Un momento por favor...")
 def load_data():
     try:
-        supabase_url = st.secrets["supabase_url"]
-        supabase_key = st.secrets["supabase_key"]
+        supabase_url = st.secrets["SUPABASE_URL"]
+        supabase_key = st.secrets["SUPABASE_KEY"]
     except Exception as e:
         st.error(f"Error al cargar las variables de entorno: {str(e)}")
         st.error(f"Traceback: {traceback.format_exc()}")
