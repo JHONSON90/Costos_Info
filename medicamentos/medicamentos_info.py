@@ -18,6 +18,7 @@ def load_data(_conn):
     try:
         rows = _conn.table("consumos").select("*").execute()
         df = pd.DataFrame(rows.data)
+        print(df.head(5))
         return df
     
     except Exception as e:
@@ -32,7 +33,7 @@ if not df.empty:
     st.success("Datos cargados y procesados exitosamente!")
 
 else:
-    st.info("No se pudieron cargar los datos o la tabla está vacía.")
+    st.info("No se pudieron cargar los datos o la tabla está vacía. Pero no te preocupes te aseguramos que estamos trabajando en solucionar esto!!!")
     st.stop()
 
 df.columns = df.columns.str.strip()
