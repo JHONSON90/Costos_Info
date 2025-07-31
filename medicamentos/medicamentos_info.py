@@ -6,27 +6,44 @@ import traceback
 import time
 import plotly.express as px
 import plotly.graph_objects as go
+from supabase import create_client, Client
 
 
 st.title("Informe de consumos")
 
 @st.cache_data(ttl=3600, show_spinner="Cargando datos. Un momento por favor...")
 def load_data():
-    df = pd.read_excel("Ene - Marzo.xlsx")
+    try:
+        supabase_url = st.secrets["supabase_url"]
+        supabase_key = st.secrets["supabase_key"]
+    except Exception as e:
+        st.error(f"Error al cargar las variables de entorno: {str(e)}")
+        st.error(f"Traceback: {traceback.format_exc()}")
+        st.stop()
+
+    try:
+        create_client(supabase_url, supabase_key)
+        response = supabase.table("consumos").select("*").execute()
+        df = pd.DataFrame(response.data)
+    except Exception as e:
+        st.error(f"Error al cargar las variables de entorno: {str(e)}")
+        st.error(f"Traceback: {traceback.format_exc()}")
+        st.stop()
+
+    try:
+        placeholder = st.empty()
+        placeholder.success("Conexión exitosa!")
+        time.sleep(2)
+        placeholder.empty()
+    except Exception as e:
+        placeholder = st.empty()
+        placeholder.error(f"Error al conectar con Google Sheets: {str(e)}")
+        placeholder.error(f"Traceback: {traceback.format_exc()}")
+        placeholder.empty()
+
     return df
 
-try:
-    df = load_data()
-    placeholder = st.empty()
-    placeholder.success("Conexión exitosa!")
-    time.sleep(2)
-    placeholder.empty()
-except Exception as e:
-    placeholder = st.empty()
-    placeholder.error(f"Error al conectar con Google Sheets: {str(e)}")
-    placeholder.error(f"Traceback: {traceback.format_exc()}")
-    placeholder.empty()
-
+df = load_data()
 print(df.info())
 df.columns = df.columns.str.strip()
 
