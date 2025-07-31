@@ -1,53 +1,35 @@
 import streamlit as st
 import pandas as pd 
 import numpy as np
-from streamlit_gsheets import GSheetsConnection
 import traceback
 import time
 import plotly.express as px
 import plotly.graph_objects as go
-from supabase import create_client, Client
-
+from st_supabase_connection import SupabaseConnection
 
 st.title("Informe de consumos")
 
 @st.cache_resource(show_spinner="Cargando datos. Un momento por favor...")
 def init_connection():
     try:
-        supabase_url = st.secrets["SUPABASE_URL"]
-        supabase_key = st.secrets["SUPABASE_KEY"]
-        return create_client(supabase_url, supabase_key)
+        conn = st.connection("supabase", type=SupabaseConnection)
+        data = conn.query("*", table="consumos").execute()
+        df = pd.DataFrame(data.data)
+        return df
+    
     except Exception as e:
         st.error(f"Error al cargar las variables de entorno: {str(e)}")
         st.error(f"Traceback: {traceback.format_exc()}")
         st.stop()
 
-supabase = init_connection()
-
-@st.cache_data(ttl=3600, show_spinner="Cargando datos. Un momento por favor...")
-def load_data():
-    try:
-        response = supabase.table("consumos").select("*").execute()
-        df = pd.DataFrame(response.data)
-        return df
-    except Exception as e:
-        st.error(f"Error al cargar las variables de entorno: {str(e)}")
-        st.error(f"Traceback: {traceback.format_exc()}")
-        return pd.DataFrame()
-
-df = load_data()
+df = init_connection()
 
 if not df.empty:
-    try:
-        placeholder = st.empty()
-        placeholder.success("Conexión exitosa!")
-        time.sleep(2)
-        placeholder.empty()
-    except Exception as e:
-        placeholder = st.empty()
-        placeholder.error(f"Error al conectar con Supabase: {str(e)}")
-        placeholder.error(f"Traceback: {traceback.format_exc()}")
-        placeholder.empty()
+    st.success("Datos cargados y procesados exitosamente!")
+
+else:
+    st.info("No se pudieron cargar los datos o la tabla está vacía.")
+    st.stop()
 
 df.columns = df.columns.str.strip()
 
