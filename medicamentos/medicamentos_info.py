@@ -47,6 +47,8 @@ df["dValor"] = abs(df["dValor"])
 df["NUMERO MES"] = df["fecha"].dt.month
 df["Ano"] = df["fecha"].dt.year
 
+df["NUMERO MES"] = df["NUMERO MES"].astype(int)
+df["Ano"] = df["Ano"].astype(int)
 df["dValor"] = df["dValor"].astype(int)
 df["dCantidad"] = df["dCantidad"].astype(int)
 
@@ -79,7 +81,7 @@ if selected_lineas:
         filtered_df = df[final_condition]
 
 if not filtered_df.empty:
-    st.subheader(f"Consumo de {', '.join(selected_lineas)}")
+    st.subheader(f"Consumo de {', '.join(selected_lineas)}" if selected_lineas else "Consumos")
     col1, col2 = st.columns([2,1])
     with col1:
         pivot_df = filtered_df.pivot_table(index="NUMERO MES", values="dValor", aggfunc="sum").reset_index()
