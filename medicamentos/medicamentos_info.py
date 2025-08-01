@@ -39,17 +39,9 @@ print(df.columns)
 df.columns = df.columns.str.strip()
 
 df["fecha"] = pd.to_datetime(df["fecha"], format="%Y%m", errors="coerce")
-df["dia"] = df["fecha"].dt.day
 
 df["dCantidad"] = abs(df["dCantidad"])
 df["dValor"] = abs(df["dValor"])
-
-#df["NUMERO MES"] = df["fecha"].dt.month
-#df["AÑO"] = df["fecha"].dt.year
-
-#df["AÑO"] = df["AÑO"].astype(int)
-df["dValor"] = df["dValor"].astype(int)
-df["dCantidad"] = df["dCantidad"].astype(int)
 
 CODIGO_PREFIJADO = "6135"
 df["CtaCruce"] = df["CtaCruce"].astype(str)
