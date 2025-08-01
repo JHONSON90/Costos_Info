@@ -73,7 +73,7 @@ if selected_lineas:
         filtered_df = df[final_condition]
 
 if not filtered_df.empty:
-    st.subheader(f"Consumo de {', '.join(selected_lineas)}" if conditions else "Consumos")
+    st.subheader(f"Consumo de {', '.join(selected_lineas)}")
     col1, col2 = st.columns([2,1])
     with col1:
         pivot_df = filtered_df.pivot_table(index="NUMERO MES", values="dValor", aggfunc="sum").reset_index()
