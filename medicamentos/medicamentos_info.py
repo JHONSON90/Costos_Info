@@ -38,6 +38,8 @@ else:
 print(df.columns)
 df.columns = df.columns.str.strip()
 
+print(df.pivot_table(index="fecha", values="dValor", aggfunc="sum").reset_index())
+
 df["fecha"] = pd.to_datetime(df["fecha"], format="%Y%m", errors="coerce")
 
 df["dCantidad"] = abs(df["dCantidad"])
