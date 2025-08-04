@@ -35,12 +35,12 @@ if not df.empty:
 else:
     st.info("No se pudieron cargar los datos o la tabla está vacía. Pero no te preocupes te aseguramos que estamos trabajando en solucionar esto!!!")
     st.stop()
-print(df.columns)
+
 df.columns = df.columns.str.strip()
 
-print(df.pivot_table(index="fecha", values="dValor", aggfunc="sum").reset_index())
+st.write(df.pivot_table(index="fecha", values="dValor", aggfunc="sum").reset_index())
 
-df["fecha"] = pd.to_datetime(df["fecha"], format="%Y%m", errors="coerce")
+#df["fecha"] = pd.to_datetime(df["fecha"], format="%Y%m", errors="coerce")
 
 df["dCantidad"] = abs(df["dCantidad"])
 df["dValor"] = abs(df["dValor"])

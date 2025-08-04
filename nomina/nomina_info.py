@@ -268,7 +268,8 @@ st.title("Analisis de Nomina por ingresos del trabajador")
 
 df3 = df.copy()
 df3 = df3.set_index('FECHA')
-ingresos = df3.resample("ME")["BASICO", "VACACIONES DISFRU", "HORAS ADICIONALES", "APOYO DE SOSTENIMIENTO", "OTROS DEVENGOS", "REINTEGROS", "INCAP. ENFERMEDAD"].sum()
+df3["FECHA"] = pd.to_datetime(df3["FECHA"], format="%d/%m/%Y")
+ingresos = df3.resample("M")[["BASICO", "VACACIONES DISFRU", "HORAS ADICIONALES", "APOYO DE SOSTENIMIENTO", "OTROS DEVENGOS", "REINTEGROS", "INCAP. ENFERMEDAD"]].sum()
 
 
 fig = make_subplots(rows=2, cols=4, subplot_titles=["BASICO", "VACACIONES DISFRU", "HORAS ADICIONALES", "APOYO DE SOSTENIMIENTO", "OTROS DEVENGOS", "REINTEGROS", "INCAP. ENFERMEDAD"])
@@ -284,7 +285,8 @@ st.title("Analisis de Nomina por Aportes y Parafiscales")
 
 df4 = df.copy()
 df4 = df4.set_index('FECHA')
-aportes = df4.resample("ME")["SENA", "ICBF", "CAJA", "SALUD", "PENSION", "ARL"].sum()
+df4["FECHA"] = pd.to_datetime(df4["FECHA"], format="%d/%m/%Y")
+aportes = df4.resample("M")[["SENA", "ICBF", "CAJA", "SALUD", "PENSION", "ARL"]].sum()
 
 fig2 = make_subplots(rows=2, cols=3, subplot_titles=["SENA", "ICBF", "CAJA", "SALUD", "PENSION", "ARL"])
 for i, aporte in enumerate(aportes):
@@ -298,7 +300,8 @@ st.title("Analisis de Nomina por Provisiones")
 
 df5 = df.copy()
 df5 = df5.set_index('FECHA')
-provisiones = df5.resample("ME")["CESANTIAS", "INT. CESANTIAS", "PRIMA DE SERVICIOS", "VACACIONES"].sum()
+df5["FECHA"] = pd.to_datetime(df5["FECHA"], format="%d/%m/%Y")
+provisiones = df5.resample("M")[["CESANTIAS", "INT. CESANTIAS", "PRIMA DE SERVICIOS", "VACACIONES"]].sum()
 
 
 fig3 = make_subplots(rows=1, cols=4, subplot_titles=["CESANTIAS", "INT. CESANTIAS", "PRIMA DE SERVICIOS", "VACACIONES"])
