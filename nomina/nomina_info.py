@@ -267,8 +267,8 @@ else:
 st.title("Analisis de Nomina por ingresos del trabajador")
 
 df3 = df.copy()
-df3 = df3.set_index('FECHA')
 df3["FECHA"] = pd.to_datetime(df3["FECHA"], format="%d/%m/%Y")
+df3 = df3.set_index('FECHA')
 ingresos = df3.resample("M")[["BASICO", "VACACIONES DISFRU", "HORAS ADICIONALES", "APOYO DE SOSTENIMIENTO", "OTROS DEVENGOS", "REINTEGROS", "INCAP. ENFERMEDAD"]].sum()
 
 
@@ -284,8 +284,8 @@ st.plotly_chart(fig, use_container_width=True)
 st.title("Analisis de Nomina por Aportes y Parafiscales")
 
 df4 = df.copy()
-df4 = df4.set_index('FECHA')
 df4["FECHA"] = pd.to_datetime(df4["FECHA"], format="%d/%m/%Y")
+df4 = df4.set_index('FECHA')
 aportes = df4.resample("M")[["SENA", "ICBF", "CAJA", "SALUD", "PENSION", "ARL"]].sum()
 
 fig2 = make_subplots(rows=2, cols=3, subplot_titles=["SENA", "ICBF", "CAJA", "SALUD", "PENSION", "ARL"])
@@ -299,8 +299,8 @@ st.plotly_chart(fig2, use_container_width=True)
 st.title("Analisis de Nomina por Provisiones")
 
 df5 = df.copy()
-df5 = df5.set_index('FECHA')
 df5["FECHA"] = pd.to_datetime(df5["FECHA"], format="%d/%m/%Y")
+df5 = df5.set_index('FECHA')
 provisiones = df5.resample("M")[["CESANTIAS", "INT. CESANTIAS", "PRIMA DE SERVICIOS", "VACACIONES"]].sum()
 
 

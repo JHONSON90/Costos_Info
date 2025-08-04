@@ -38,7 +38,7 @@ else:
 
 df.columns = df.columns.str.strip()
 
-st.write(df.pivot_table(index="fecha", values="dValor", aggfunc="sum").reset_index())
+st.write(df.pivot_table(index="NUMERO MES", values="dValor", aggfunc="sum").reset_index())
 
 #df["fecha"] = pd.to_datetime(df["fecha"], format="%Y%m", errors="coerce")
 
